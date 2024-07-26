@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Cek Kodam By Maman</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #f0f0f0;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                margin: 0;
+            }
+            .container {
+                background-color: #fff;
+                padding: 20px;
+                border-radius: 8px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                text-align: center;
+                width: 300px;
+            }
+            input[type="text"] {
+                padding: 10px;
+                margin: 10px 0;
+                width: 100%;
+                box-sizing: border-box;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+            }
+            button {
+                padding: 10px 20px;
+                border: none;
+                background-color: #007bff;
+                color: white;
+                font-size: 16px;
+                border-radius: 4px;
+                cursor: pointer;
+                transition: background-color 0.3s ease;
+            }
+            button:hover {
+                background-color: #0056b3;
+            }
+            #hasil {
+                margin-top: 20px;
+                padding: 10px;
+                background-color: #e0e0e0;
+                border-radius: 4px;
+                display: none;
+            }
+            #hasil img {
+                max-width: 100%;
+                border-radius: 4px;
+            }
+            footer {
+                margin-top: 20px;
+                padding: 10px;
+                background-color: #007bff;
+                color: white;
+                text-align: center;
+                width: 100%;
+                border-top: 1px solid #0056b3;
+                position: absolute;
+                bottom: 0;
+                font-size: 14px;
+            }
+        </style>
+        <script>
+            function cekKodam() {
+                const nama = document.getElementById("nama").value;
+                const hasilDiv = document.getElementById("hasil");
+                if (nama) {
+                    const kodam = getRandomKodam();
+                    hasilDiv.innerHTML =
+                        "<p>" +
+                        nama +
+                        " Kodam Anda Adalah:</p>" +
+                        '<img src="' +
+                        kodam.img +
+                        '" alt="' +
+                        kodam.name +
+                        '" />';
+                    hasilDiv.style.display = "block";
+                } else {
+                    hasilDiv.innerHTML = "Harap masukkan nama terlebih dahulu.";
+                    hasilDiv.style.display = "block";
+                }
+            }
+
+            function getRandomKodam() {
+                const kodams = [
+                    { name: "Harimau Merah", img: "images/harimauMerah.jpg" },
+                    { name: "Harimau", img: "images/harimau.jpeg" },
+                    { name: "Ular", img: "images/ular.jpg" },
+                    { name: "Kodok", img: "images/kodok.jpg" },
+                    { name: "Harimau Putih", img: "images/harimauPutih.jpg" },
+                    { name: "Buta Ijo", img: "images/butaIjo.jpg" },
+                    { name: "Kadal", img: "images/kadal.jpg" },
+                    { name: "Macan Tutul", img: "images/macanTutul.jpg" },
+                    { name: "Buaya", img: "images/buaya.jpg" },
+                    { name: "Naga", img: "images/naga.jpg" }
+                ];
+                return kodams[Math.floor(Math.random() * kodams.length)];
+            }
+        </script>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Cek Kodam</h1>
+            <label for="nama">Nama:</label>
+            <input type="text" id="nama" name="nama" />
+            <button onclick="cekKodam()">Cek Kodam</button>
+            <div id="hasil"></div>
+        </div>
+        <footer>
+            <p>&copy; 2024 Cek Kodam. By Maman</p>
+        </footer>
+    </body>
+</html>
